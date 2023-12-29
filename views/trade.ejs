@@ -1,0 +1,105 @@
+<%- include('./partials/header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/css/trade.css">
+<form >
+  <% if(user == trade.author._id) { %>
+  <div class="row">
+    <button  class="button" type="submit" formmethod="GET" formaction="/trades/<%= trade.id%>/edit" >EDIT</button>
+    <button  class="button" type="submit" formmethod="post" formaction="/trades/<%= trade.id%>?_method=DELETE">DELETE</button>
+    
+  </div>
+  <% };%>
+</form>
+  <div class="row">
+    <%if(!(user== trade.author._id)&&trade.status=="Available"){%>
+      <form action="/trades/<%= trade.id%>/trade" method="get">
+        <div class="row">
+        <button type="submit" class="button">Trade</button>
+      </div>
+      </form>
+      <%if(trade.Watchlist===false){%>
+        <form action="/trades/<%= trade.id%>/watchlist" method="post">
+          <div class="row">
+          <label for="Name"></label><br />
+          <input
+            type="hidden"
+            id="Name"
+            name="Name"
+            value="<%= trade.name%>"
+            required
+          />
+          <button type="submit" class="button" id="save">
+            Add to Wishlist
+          </button>
+        </div>
+        </form>
+      <%}else{%>
+        <form
+        action="/trades/<%= trade.id%>/savedelete?_method=delete"
+        method="post">
+        <button type="submit" class="button">UnWish</button>
+      </form>
+      <%}%>
+      <%}%>
+
+
+
+
+    </form>
+  </div>
+  </form>
+    <div class="row">
+      <div class="col-sm">
+        <div class="card-img">
+          
+         
+            <img class="card-img" src=<%= trade.image %> alt="Card image">
+            <h2 class="card-title"><%= trade.name %></h2>
+           
+          </div>
+      </div>
+      <div class="col-sm">
+        <div  >
+            <div class="card-details">
+              <h2 class="details">Age</h2>
+              <p class="details-para">
+                <%= trade.age %>     
+              </p><br>
+              
+              <h2 class="details">Category</h2>
+              <p class="details-para">
+                <%= trade.category %>     
+              </p><br>
+
+              <h2 class="details">Status</h2>
+              <p class="details-para">
+                <%= trade.status %>     
+              </p><br>
+
+              <h2 class="details">Topic</h2>
+              <p class="details-para">
+                <%= trade.topic %>     
+              </p><br>
+
+                <h2 class="details">Details</h2>
+              <p class="details-para">
+                <%= trade.details %>     
+              </p>
+             
+            </div>
+          </div>  
+          
+            
+          
+    </div>       
+</div>
+
+
+<br><br><br><br><br><br>
+
+  
+        
+    <%- include('./partials/footer.ejs') %>
+   
+   

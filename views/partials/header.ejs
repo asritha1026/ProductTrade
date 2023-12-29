@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> GoGreen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <a href="/" class="lname"><img class="logo-main" src="/images/Tradelogo.png" alt="logo" ></a>
+    <div class="header-right">
+      
+      <!-- <a  class="login" href="#contact">Login|Signup</a> -->
+      
+      <% if(!user){ %>
+        <a href='/users/new'>Sign Up</a>
+        <a href='/users/login'>Login</a>
+        <% } else { %>
+        <a class="newTrade" href="/trades/newTrade">Start Trading &#10148;</a>
+        <a href='/users/profile'>Profile</a>
+        <a href='/users/logout'>Logout</a>
+        <% } %>
+      <!-- <a href='/users/login'>Login</a> -->
+      <a class="trade" href="/trades">&trade;Swaps</a>  
+    </div>
+  </div>
+  <% if(errorMessages.length > 0) {%>
+    <% errorMessages.forEach(message=>{%>
+        <div class='error'>
+            <%=message%>
+        </div>
+        <%});%>
+            <%}%>
+
+                <% if(successMessages.length > 0) {%>
+
+                    <% successMessages.forEach(message=>{%>
+                        <div class='success'>
+                            <%=message%>
+                        </div>
+                        <%});%>
+                            <%}%>
+    <!-- Header -->
+    

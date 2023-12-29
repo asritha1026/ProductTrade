@@ -1,0 +1,20 @@
+<%- include('./partials/header.ejs') %>
+<link rel="stylesheet" href="/css/newTrade.css">
+  <div class="main">
+    <form  action="/trades/<%= trade.id %>?_method=PUT" method="POST">
+      <h2 class="headingform">Update Trade</h2>
+      <div class="card-view" >
+    <input type="text" name="name" id="name" class="form-control" value=" <%= trade.name %>" required> <br><br>
+    <input type="text" name="age" id="age" class="form-control" value=" <%= trade.age %>" required> <br><br>
+    <input type="text" name="category" class="form-control" id="plantcatogory" value="<%= trade.category %>" required> <br>
+    <input type="text" class="form-control" id="topic"   name="topic" value="<%= trade.topic %>"value="<%= trade.category %>"required><br>
+    <input type="text" class="form-control" id="status"  name="status" value="<%= trade.status %>"required><br>
+    <textarea class="form-control" name="details" id="details" required><%= trade.details %></textarea>
+    <br>
+    <textarea class="form-control" name="image" id="description" required><%= trade.image %></textarea>
+   <br>
+    <button class="nw-button">Submit</button>
+      </div>
+    </form>
+</div>
+<%- include('./partials/footer.ejs') %>

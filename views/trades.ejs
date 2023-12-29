@@ -1,0 +1,77 @@
+
+    <%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" href="/css/trades.css">
+   
+
+    <div class="container">
+      
+      
+          <% if(categories.length > 0){%>
+
+              <% categories.forEach(category=>{%>
+
+
+             <center>   <p id="cat-id">Category: <%=category%>   <br> </p></center>
+              <% trades.forEach(trade=>{ %>
+
+                <% if(trade.category==category){%> 
+
+                
+                  <div class="card-bor">
+                    <img style="width:400px;" src=<%= trade.image %> alt="Card image">
+                    <h4 class="plant-name"><%=trade.name %></h4>
+                    <a href="/trades/<%=trade.id %>"  class="btn btn-primary">Details</a>
+                  </div>
+                   
+                      <!-- <div class="card" >
+                          <img class="card-img-top" src=<%= trade.image %> alt="Card image">
+                          <div class="card-body">
+                            <h4 class="card-title"><%=trade.name %></h4>
+                            <p>Category: <%=trade.category  %></p>
+                            
+                          </div> -->
+                    
+            
+                     
+                <%}%>
+
+
+                
+                <% }) %>
+
+
+              <%})%>
+              <br>
+              <br>
+
+
+
+
+
+
+
+
+
+     
+
+
+          <%} else{%>
+            <p  id="nope" >No plants available</p>
+
+            <%}%>
+
+
+
+
+
+
+
+
+
+      
+         
+    </div>
+    
+    <%- include('./partials/footer.ejs') %>
+    
+    
